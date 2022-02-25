@@ -1,40 +1,45 @@
 let mylibrary = {};
 
-function Book(title, author, pages, isRead, id){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isRead = isRead;
-    this.id = id;
-    // HTML version of the current book
-    this.HTML_book = document.createElement("div");
-    this.HTML_book.setAttribute("class", "book");
-    let max_string_length = 15;
-    let fixed_title = this.title.length > max_string_length ? this.title.substring(0, max_string_length) + "..." : this.title;
-    let fixed_author = this.author.length > max_string_length ? this.author.substring(0, max_string_length) + "..." : this.author;
-    this.HTML_book.innerHTML = `
-    <div class="book-header">
-        <h2>${fixed_title}</h2>
-        <button id="remove-self" class="custom-button" value="${this.id}">X</button>
-    </div>
-    <div id="info">
-        <h3>Author: ${fixed_author}</h3>
-        <h3>Pages: ${this.pages}</h3>
-        <div id="readnotread">
-            <h3>Read:</h3>
-            <button class="custom-checkbox" id="isread" value=${this.isRead}></button>
-        </div> 
-    </div>
-    `;
-    this.HTML_book.querySelector("#remove-self").addEventListener("click", function(){ removeBook(mylibrary, this.value); });
+class Book{
+    constructor(title, author, pages, isRead, id){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.isRead = isRead;
+        this.id = id;
+        
+        let max_string_length = 15;
+        let fixed_title = this.title.length > max_string_length ? this.title.substring(0, max_string_length) + "..." : this.title;
+        let fixed_author = this.author.length > max_string_length ? this.author.substring(0, max_string_length) + "..." : this.author;
 
-    let checkbox = this.HTML_book.querySelector("#isread");
-    checkbox.addEventListener("click", function(){ toggleCustomCheckbox(this) });
-    if(this.isRead === "1"){
-        checkbox.classList.add("custom-checkbox-checked");
-        checkbox.classList.remove("custom-checkbox");
+        this.HTML_book = document.createElement("div");
+        this.HTML_book.setAttribute("class", "book");
+        this.HTML_book.innerHTML = `<div class="book-header">
+                                    <h2>${fixed_title}</h2>
+                                    <button id="remove-self" class="custom-button" value="${this.id}">X</button>
+                                    </div>
+                                    <div id="info">
+                                        <h3>Author: ${fixed_author}</h3>
+                                        <h3>Pages: ${this.pages}</h3>
+                                        <div id="readnotread">
+                                            <h3>Read:</h3>
+                                            <button class="custom-checkbox" id="isread" value=${this.isRead}></button>
+                                        </div> 
+                                </div>`;
+        this.HTML_book.querySelector("#remove-self").addEventListener("click", function(){ removeBook(mylibrary, this.value); });
+
+        let checkbox = this.HTML_book.querySelector("#isread");
+        checkbox.addEventListener("click", function(){ toggleCustomCheckbox(this) });
+        if(this.isRead === "1"){
+            checkbox.classList.add("custom-checkbox-checked");
+            checkbox.classList.remove("custom-checkbox");
+        }
     }
-}
+
+    get_HTML_book(){
+        return this.HTML_book;
+    }
+};
 
 function addBook(library){
     const title = document.querySelector("#input-title");
