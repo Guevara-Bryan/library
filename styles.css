@@ -96,7 +96,7 @@ html{
     align-items: center;
     justify-content: space-between;
     height: 30%;
-    border-bottom: 2px solid var(--secondary-color, white);;
+    border-bottom: 2px solid var(--secondary-color, white);
     padding: 0px 15px;
 }
 
@@ -110,16 +110,11 @@ html{
     padding: 0px 15px 15px 15px;
 }
 
-.error{
-    box-shadow: 0px 0px 9px 4px var(--secondary-accent-color, white);
-    transform: scale(1.1);
-}
-
 
 #options-title{
     color: var(--secondary-color, white);
-    border-top: 2px solid var(--secondary-color, white);;
-    border-bottom: 2px solid var(--secondary-color, white);;
+    border-top: 2px solid var(--secondary-color, white);
+    border-bottom: 2px solid var(--secondary-color, white);
     width: 100%;
     text-align: center;
     padding: 3% 0;
@@ -149,7 +144,7 @@ html{
     height: fit-content;
     padding: 4% 7%;
     color: var(--secondary-color, white);;
-    border: 1px solid var(--secondary-color, white);;
+    border: 1px solid var(--secondary-color, white);
     border-radius: 0.25rem;
     background-color:transparent;
     transition: transform 200ms;
@@ -167,15 +162,15 @@ html{
 .custom-checkbox{
     height: 20px;
     width: 20px;
-    background-color: var(--base-color, black);;
+    background-color: var(--base-color, black);
     border: 1px solid var(--accent-color, white);
     transition: border 200ms;
 }
 .custom-checkbox-checked{
     height: 20px;
     width: 20px;
-    background-color: var(--base-color, black);;
-    border: 4px solid var(--accent-color, white);;
+    background-color: var(--base-color, black);
+    border: 4px solid var(--accent-color, white);
     transition: border 100ms;
 }
 
@@ -185,7 +180,7 @@ html{
     height: 25px;
     width: 70%;
     background-color: transparent;
-    border: 1px solid var(--secondary-color, white);;
+    border: 1px solid var(--secondary-color, white);
     color: var(--secondary-color, white);;
     border-radius: 0.25rem;
     font-size: 13pt;
@@ -195,4 +190,27 @@ html{
 .custom-text-field:focus{
     outline: none;
     box-shadow: 0px 0px 9px 4px var(--accent-color);
+}
+
+.error{
+    width: fit-content;
+    text-align: center;
+    position: absolute;
+    padding: 0 10px;
+    height: 30px;
+    background-color: var(--secondary-color, white);
+    border: 1px solid var(--base-color, black);
+    border-radius: 0.25rem;
+    color: var(--base-color, black);
+    transform: translate(73px, 30px);
+    visibility: hidden;
+}
+
+.error.active{
+    visibility: visible;
+}
+
+.custom-text-field:invalid{
+    box-shadow: 0px 0px 9px 4px var(--secondary-accent-color, white);
+    transform: scale(1.1);
 }
